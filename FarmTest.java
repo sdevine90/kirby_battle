@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.*;
 
 public class FarmTest{
@@ -29,10 +29,10 @@ public class FarmTest{
   }
 
   @Test 
-  public void cannotSmashKirbyWhenBattleFull(){
-    for (int i = 0; i < 4; i++){
-      farm.smash(kirby);
-    }
-    assertEquals(4, farm.brosCount());
+  public void canDance(){
+    farm.smash(kirby);
+    Edible bros = farm.dance();
+    Kirby original = (Kirby)bros;
+    assertEquals("jiggling", original.jiggle());
   }
 }

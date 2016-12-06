@@ -1,12 +1,14 @@
-public class Farm {
-  private String name;
+import java.util.*;
 
-  private Kirby[] battle;
+public class Farm {
+  
+  private String name;
+  private ArrayList<Edible> battle;
 
 
   public Farm(String name){
     this.name = name;
-    this.battle = new Kirby[4];
+    this.battle = new ArrayList<Edible>();
   }
 
   public String getName(){
@@ -15,25 +17,18 @@ public class Farm {
   }
 
   public int brosCount(){
-    int count = 0;
-    for (Kirby kirby : battle){
-      if (kirby != null){
-        count++;
-      }
+   return battle.size();
+  }
+
+  public void smash(Edible bros){
+  battle.add(bros);
+  }
+
+  public Edible dance(){
+    if (brosCount() > 0 ) {
+      return battle.remove(0);
     }
-    return count;
+      return null;
   }
-
-  public void smash(Kirby kirby){
-    if (battleFull()){
-      return;
-    }
-    int brosCount = brosCount();
-    battle[brosCount] = kirby;
-  }
-
-  public boolean battleFull(){
-    return brosCount() == battle.length;
-  }
-
+ 
 }
